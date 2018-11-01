@@ -5,8 +5,8 @@ import store from './store/store'
 
 import Header from './components/Header';
 import Productos from './components/Productos';
-import NuevoProducto from './components/NuevoProducto';
-import EditarProducto from './components/EditarProducto';
+import { NuevoProducto } from './components/NuevoProducto';
+import { EditarProducto } from './components/EditarProducto';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Router className="App">
+        <Router>
           <React.Fragment>
             <Header></Header>
             <div className="container">
