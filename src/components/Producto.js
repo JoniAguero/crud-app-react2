@@ -8,7 +8,10 @@ export class Producto extends Component {
         <th scope="row">{id}</th>
         <td>{nombre}</td>
         <td>{precio}</td>
-        <td>Column content</td>
+        <td>
+          <button type="button" class="btn btn-success mr-1">Editar</button>
+          <button type="button" class="btn btn-danger">Eliminar</button>
+        </td>
       </tr>
     )
   }
