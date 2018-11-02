@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Provider } from 'react-redux';
-import store from './store/store'
+import store from './store'
 
 import Header from './components/Header';
 import Productos from './components/Productos';
@@ -16,7 +16,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <React.Fragment>
-            <Header></Header>
+            <Header />
             <div className="container">
               <Switch>
                 <Route exact path='/' component={Productos} />
