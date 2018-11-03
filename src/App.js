@@ -5,7 +5,7 @@ import store from './store'
 
 import Header from './components/Header';
 import Productos from './components/Productos';
-import { NuevoProducto } from './components/NuevoProducto';
+import NuevoProducto from './components/NuevoProducto';
 import EditarProducto from './components/EditarProducto';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";

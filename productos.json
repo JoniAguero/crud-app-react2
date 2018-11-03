@@ -1,11 +1,6 @@
 {
   "productos": [
     {
-      "id": 1,
-      "nombre": "Pastel 1",
-      "precio": 100
-    },
-    {
       "id": 2,
       "nombre": "Pastel 2",
       "precio": 20
@@ -19,6 +14,21 @@
       "id": 4,
       "nombre": "Pastel de Zanahoria",
       "precio": 250
+    },
+    {
+      "nombre": "Pastel de Caca ",
+      "precio": "400",
+      "id": 5
+    },
+    {
+      "nombre": "Pastel",
+      "precio": "200",
+      "id": 6
+    },
+    {
+      "nombre": "pastel ultimo",
+      "precio": "1221",
+      "id": 7
     }
   ]
 }

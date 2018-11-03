@@ -1,4 +1,12 @@
-import { FETCH_PRODUCTOS_REQUEST, FETCH_PRODUCTOS_SUCCESS, FETCH_PRODUCTO_SUCCESS , DELETE_PRODUCTO } from './types';
+import {
+    FETCH_PRODUCTOS_REQUEST,
+    FETCH_PRODUCTOS_SUCCESS,
+    FETCH_PRODUCTO_SUCCESS,
+    FETCH_PRODUCTO_REQUEST,
+    AGREGAR_PRODUCTO,
+    DELETE_PRODUCTO,
+    EDITAR_PRODUCTO
+} from './types';
 
 import axios from 'axios';
 
@@ -15,7 +23,7 @@ export const fetchProductos = () => async dispatch => {
 
 export const fetchProductoById = id => async dispatch => {
     dispatch({
-        type: FETCH_PRODUCTOS_REQUEST
+        type: FETCH_PRODUCTO_REQUEST
     })
     const respuesta = await axios.get(`http://localhost:5000/productos/${id}`);
     dispatch({
@@ -24,11 +32,26 @@ export const fetchProductoById = id => async dispatch => {
     })
 }
 
+export const postProducto = (producto) => async dispatch => {
+    const respuesta = await axios.post(`http://localhost:5000/productos`, producto);
+    dispatch({
+        type: AGREGAR_PRODUCTO,
+        payload: respuesta.data
+    })
+}
+
 export const deleteProductoById = (id) => async dispatch => {
-    console.log('eliminaod...');
     await axios.delete(`http://localhost:5000/productos/${id}`);
     dispatch({
         type: DELETE_PRODUCTO,
         payload: id
+    })
+}
+
+export const editProductoById = (producto) => async dispatch => {
+    const respuesta = await axios.put(`http://localhost:5000/productos/${producto.id}`);
+    dispatch({
+        type: EDITAR_PRODUCTO,
+        payload: respuesta.data
     })
 }

@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTOS_SUCCESS, FETCH_PRODUCTO_SUCCESS ,DELETE_PRODUCTO } from './../actions/types';
+import { FETCH_PRODUCTOS_SUCCESS, FETCH_PRODUCTO_SUCCESS, AGREGAR_PRODUCTO, DELETE_PRODUCTO } from './../actions/types';
 
 const initialState = {
     productos: [],
@@ -16,6 +16,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 productoSelected: action.payload
+            }
+        case AGREGAR_PRODUCTO:
+            return {
+                ...state,
+                productos: [...state.productos, action.payload]
             }
         case DELETE_PRODUCTO:
             return {

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from  'react-router-dom';
 
-export class NuevoProducto extends Component {
+import { connect } from 'react-redux';
+import { postProducto } from '../actions/productosActions';
+
+class NuevoProducto extends Component {
 
   constructor(props) {
     super(props);
@@ -36,7 +39,15 @@ export class NuevoProducto extends Component {
       this.setState({error: true})
     } else {
       this.setState({error: false})
-      
+
+      const PRODUCTO = {
+        nombre,
+        precio
+      }
+
+      this.props.postProducto(PRODUCTO);
+
+      this.props.history.push('/');
     }
   }
 
@@ -60,5 +71,5 @@ export class NuevoProducto extends Component {
     )
   }
 }
-
-export default NuevoProducto
+ 
+export default connect(null, { postProducto })(NuevoProducto);
