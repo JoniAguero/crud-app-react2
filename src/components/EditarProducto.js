@@ -1,29 +1,50 @@
 import React, { Component } from 'react';
 import { Link } from  'react-router-dom';
 
-export class EditarProducto extends Component {
+import { connect } from 'react-redux';
+import { fetchProductoById } from '../actions/productosActions';
+
+class EditarProducto extends Component {
+
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    this.props.fetchProductoById(id);
+  }
+
   render() {
-    return (
+
+    const {id, nombre, precio} = this.props.productoSelected;
+    console.log(id);
+    
+    if (id !== null) {
+      return (
        <form>
         <fieldset className="mt-5">
           <div className="form-group">
             <label>ID</label>
-            <input type="number" className="form-control" id="Id" aria-describedby="emailHelp" placeholder="Id del Producto" />
+            <input type="number" className="form-control" id="Id" aria-describedby="emailHelp" placeholder={id} />
           </div>
           <div className="form-group">
             <label>Nombre</label>
-            <input type="text" className="form-control" id="Id" aria-describedby="emailHelp" placeholder="Nombre del Producto" />
+            <input type="text" className="form-control" id="Id" aria-describedby="emailHelp" placeholder={nombre} />
           </div>
           <div className="form-group">
             <label>Precio</label>
-            <input type="number" className="form-control" id="Id" aria-describedby="emailHelp" placeholder="Precio del Producto" />
+            <input type="number" className="form-control" id="Id" aria-describedby="emailHelp" placeholder={precio} />
           </div>
         </fieldset>
         <Link  to={'/'} className="btn btn-danger mr-2">Cancelar</Link>
         <button type="submit" className="btn btn-primary">Guardar</button>
       </form>
-    )
+      )
+    } else {
+      return <p>cargando..</p>
+    }
   }
 }
 
-export default EditarProducto
+const mapStateToProps = state => ({
+    productoSelected: state.listado.productoSelected
+})
+ 
+export default connect(mapStateToProps, { fetchProductoById })(EditarProducto);

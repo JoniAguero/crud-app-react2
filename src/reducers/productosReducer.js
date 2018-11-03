@@ -1,7 +1,8 @@
-import { FETCH_PRODUCTOS_SUCCESS, DELETE_PRODUCTO } from './../actions/types';
+import { FETCH_PRODUCTOS_SUCCESS, FETCH_PRODUCTO_SUCCESS ,DELETE_PRODUCTO } from './../actions/types';
 
 const initialState = {
-    productos: []
+    productos: [],
+    productoSelected: null
 }
 
 export default function(state = initialState, action) {
@@ -10,6 +11,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 productos: action.payload
+            }
+        case FETCH_PRODUCTO_SUCCESS:
+            return {
+                ...state,
+                productoSelected: action.payload
             }
         case DELETE_PRODUCTO:
             return {
