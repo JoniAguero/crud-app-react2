@@ -11,14 +11,9 @@ class EditarProducto extends Component {
     this.props.fetchProductoById(id);
   }
 
-  render() {
-
-    const {id, nombre, precio} = this.props.productoSelected;
-    console.log(id);
-    
-    if (id !== null) {
-      return (
-       <form>
+  renderInfo = (producto) => {
+    const { id, nombre, precio } = producto;
+    return(<form>
         <fieldset className="mt-5">
           <div className="form-group">
             <label>ID</label>
@@ -36,10 +31,27 @@ class EditarProducto extends Component {
         <Link  to={'/'} className="btn btn-danger mr-2">Cancelar</Link>
         <button type="submit" className="btn btn-primary">Guardar</button>
       </form>
-      )
-    } else {
-      return <p>cargando..</p>
-    }
+    )
+  }
+
+  renderProgress = () => {
+    return (
+      <div className="progress mt-5">
+        <div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style={{ width: '75%' }}></div>
+      </div>
+    )
+  }
+
+  render() {
+    return(
+      <div>
+        {
+          this.props.productoSelected !== null ?
+          this.renderInfo(this.props.productoSelected) :
+          this.renderProgress()
+        }
+      </div>
+    )
   }
 }
 
