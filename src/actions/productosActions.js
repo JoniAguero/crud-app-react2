@@ -49,7 +49,7 @@ export const deleteProductoById = (id) => async dispatch => {
 }
 
 export const editProductoById = (producto) => async dispatch => {
-    const respuesta = await axios.put(`http://localhost:5000/productos/${producto.id}`);
+    const respuesta = await axios.put(`http://localhost:5000/productos/${producto.id}`, producto);
     dispatch({
         type: EDITAR_PRODUCTO,
         payload: respuesta.data

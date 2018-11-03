@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from  'react-router-dom';
 
 import { connect } from 'react-redux';
-import { postProducto } from '../actions/productosActions';
+import { editProductoById } from '../actions/productosActions';
 
 class NuevoProducto extends Component {
 
@@ -45,7 +45,7 @@ class NuevoProducto extends Component {
         precio
       }
 
-      this.props.postProducto(PRODUCTO);
+      this.props.editProductoById(PRODUCTO);
 
       this.props.history.push('/');
     }
@@ -72,4 +72,4 @@ class NuevoProducto extends Component {
   }
 }
  
-export default connect(null, { postProducto })(NuevoProducto);
+export default connect(null, { editProductoById })(NuevoProducto);
